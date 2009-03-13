@@ -1,7 +1,7 @@
 sudo cp autojump /usr/bin/
 sudo cp autojump.1 /usr/share/man/man1/
 if [ -d "/etc/profile.d" ]; then
-    sudo cp autojump.sh /etc/profile.d/
+    sudo ln -s /usr/bin/autojump /etc/profile.d/autojump.sh
     echo "Remember to add the line" 
     echo "    source /etc/profile"
     echo "to your ~/.bashrc if it's not there already"
@@ -13,11 +13,11 @@ else
 	if [ $ans = "y" -o $ans = "Y" -o $ans = "yes" -o $ans = "Yes" ]; then
 	    echo "" >> ~/.bashrc
 	    echo "#autojump" >> ~/.bashrc
-	    echo "if [ -f /usr/bin/autojump.sh ]; then . /usr/bin/autojump.sh; fi" >> ~/.bashrc
+	    echo "if [ -f /usr/bin/autojump ]; then . /usr/bin/autojump; fi" >> ~/.bashrc
 	else
-	    echo "Then you need to put autojump.sh, or the code from it, somewhere where it will get read. Good luck!"
+	    echo "Then you need to put autojump, or the code from it, somewhere where it will get read. Good luck!"
 	fi
     else
-    	    echo "Then you need to put autojump.sh, or the code from it, somewhere where it will get read. Good luck!"
+	    echo "Then you need to put autojump, or the code from it, somewhere where it will get read. Good luck!"
     fi
 fi
